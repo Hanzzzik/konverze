@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rychlý WebP Konvertor Zdarma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .drop-zone { border: 2px dashed #cbd5e1; transition: all 0.3s; }
+        .drop-zone.active { border-color: #3b82f6; background: #eff6ff; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col items-center py-12 px-4">
+
+    <div class="max-w-2xl w-full bg-white p-8 rounded-2xl shadow-xl">
+        <h1 class="text-3xl font-bold text-slate-800 mb-2 text-center">Bleskový Konvertor do WebP</h1>
+        <p class="text-slate-500 mb-8 text-center">Vaše fotky nikam neposíláme. Vše se děje bezpečně ve vašem prohlížeči.</p>
+
+        <div id="dropZone" class="drop-zone rounded-xl p-10 text-center cursor-pointer">
+            <p class="text-lg text-slate-600">Přetáhněte sem obrázky nebo <span class="text-blue-600 font-semibold">klikněte pro výběr</span></p>
+            <input type="file" id="fileInput" multiple accept="image/*" class="hidden">
+        </div>
+
+        <div id="resultList" class="mt-8 space-y-4"></div>
+    </div>
+
+    <footer class="mt-8 text-slate-400 text-sm">
+        &copy; 2024 Tvůj Pasivní Projekt | Žádná data se neukládají na server.
+    </footer>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const resultList = document.getElementById('resultList');
+
+        dropZone.onclick = () => fileInput.click();
+
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.src = event.target.result;
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+                        
+                        // Konverze do WebP v prohlížeči
+                        const webpUrl = canvas.toDataURL('image/webp', 0.8);
+                        displayResult(file.name, webpUrl);
+                    };
+                };
+            });
+        }
+
+        function displayResult(oldName, newUrl) {
+            const newName = oldName.split('.')[0] + '.webp';
+            const div = document.createElement('div');
+            div.className = "flex items-center justify-between p-4 bg-slate-100 rounded-lg";
+            div.innerHTML = `
+                <span class="text-sm font-medium text-slate-700 truncate mr-4">${newName}</span>
+                <a href="${newUrl}" download="${newName}" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition">Stáhnout</a>
+            `;
+            resultList.appendChild(div);
+        }
+    </script>
+</body>
+</html>
