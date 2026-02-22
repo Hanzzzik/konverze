@@ -3,58 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universal Convertor Pro</title>
+    <title>UltraTool | PDF & Image Convertor</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 </head>
-<body class="bg-black text-gray-100 min-h-screen font-sans">
+<body class="bg-slate-950 text-slate-200 min-h-screen font-sans">
     <div class="max-w-4xl mx-auto py-12 px-6">
-        <header class="text-center mb-12">
-            <h1 class="text-5xl font-black tracking-tighter bg-gradient-to-br from-white to-gray-500 bg-clip-text text-transparent">
-                ULTRA CONVERT
-            </h1>
-            <p class="text-gray-500 mt-2 text-sm uppercase tracking-widest">Obrázky • Dokumenty • PDF</p>
+        <header class="text-center mb-10">
+            <h1 class="text-6xl font-black bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">ULTRATOOL</h1>
+            <p class="text-slate-500 mt-3 font-mono tracking-tighter text-sm uppercase">Images • PDF Merge • Document Pro</p>
         </header>
 
-        <div class="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl shadow-2xl">
-            <div class="flex flex-wrap gap-4 mb-8">
-                <div class="flex-1 min-w-[200px]">
-                    <label class="text-xs font-bold text-zinc-500 mb-2 block uppercase">Cílová operace</label>
-                    <select id="mode" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-4 outline-none focus:ring-2 focus:ring-blue-500 transition-all">
-                        <option value="webp">Konvertovat na WebP (Web)</option>
-                        <option value="jpg">Konvertovat na JPEG (Foto)</option>
-                        <option value="png">Konvertovat na PNG (Kvalita)</option>
-                        <option value="pdf">Vytvořit PDF dokument</option>
-                    </select>
-                </div>
+        <div class="bg-slate-900 border border-slate-800 p-8 rounded-[2rem] shadow-2xl">
+            <div class="mb-8">
+                <label class="text-xs font-bold text-slate-500 mb-2 block uppercase tracking-widest">Vyberte nástroj</label>
+                <select id="mode" class="w-full bg-slate-800 border border-slate-700 rounded-2xl p-4 outline-none focus:ring-2 focus:ring-cyan-500 transition-all text-lg font-semibold">
+                    <optgroup label="PDF Nástroje">
+                        <option value="merge-pdf">➕ Spojit více PDF do jednoho</option>
+                        <option value="img-to-pdf">📄 Obrázky do PDF</option>
+                    </optgroup>
+                    <optgroup label="Konverze Obrázků">
+                        <option value="webp">Obrázek na WebP</option>
+                        <option value="jpg">Obrázek na JPEG</option>
+                        <option value="png">Obrázek na PNG</option>
+                    </optgroup>
+                </select>
             </div>
 
-            <div id="dropZone" class="group border-2 border-dashed border-zinc-800 hover:border-blue-500 hover:bg-blue-500/5 rounded-2xl p-16 text-center transition-all cursor-pointer">
-                <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">⚡</div>
-                <p class="text-zinc-400 font-medium">Přetáhněte soubory sem nebo <span class="text-white">vyberte z disku</span></p>
+            <div id="dropZone" class="group border-2 border-dashed border-slate-800 hover:border-cyan-500 hover:bg-cyan-500/5 rounded-[1.5rem] p-20 text-center transition-all cursor-pointer relative overflow-hidden">
+                <div class="text-5xl mb-4 group-hover:scale-125 transition-transform duration-300">📦</div>
+                <p class="text-slate-400 text-lg">Hoďte soubory sem nebo <span class="text-cyan-400">procházejte</span></p>
                 <input type="file" id="fileInput" multiple class="hidden">
             </div>
 
-            <div id="resultList" class="mt-8 grid gap-3"></div>
+            <div id="status" class="hidden mt-4 text-center text-cyan-400 font-bold animate-pulse">Zpracovávám...</div>
+            <div id="resultList" class="mt-8 space-y-3"></div>
         </div>
     </div>
 
     <script>
-        const { jsPDF } = window.jspdf;
+        const { PDFDocument } = PDFLib;
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
         const mode = document.getElementById('mode');
         const resultList = document.getElementById('resultList');
+        const status = document.getElementById('status');
 
         dropZone.onclick = () => fileInput.click();
-        fileInput.onchange = (e) => processFiles(Array.from(e.target.files));
+        fileInput.onchange = (e) => handleProcessing(Array.from(e.target.files));
 
-        async function processFiles(files) {
-            if (mode.value === 'pdf') {
-                await createPDF(files);
-            } else {
-                files.forEach(convertImage);
+        async function handleProcessing(files) {
+            if (files.length === 0) return;
+            status.classList.remove('hidden');
+            
+            try {
+                if (mode.value === 'merge-pdf') {
+                    await mergePDFs(files);
+                } else if (mode.value === 'img-to-pdf') {
+                    await imagesToPDF(files);
+                } else {
+                    files.forEach(convertImage);
+                }
+            } catch (err) {
+                alert('Chyba při zpracování: ' + err.message);
             }
+            status.classList.add('hidden');
+        }
+
+        async function mergePDFs(files) {
+            const mergedPdf = await PDFDocument.create();
+            for (const file of files) {
+                if (file.type !== 'application/pdf') continue;
+                const pdfBytes = await file.arrayBuffer();
+                const pdf = await PDFDocument.load(pdfBytes);
+                const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                copiedPages.forEach((page) => mergedPdf.addPage(page));
+            }
+            const pdfBytes = await mergedPdf.save();
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            addResult('spojeno.pdf', URL.createObjectURL(blob));
+        }
+
+        async function imagesToPDF(files) {
+            const pdfDoc = await PDFDocument.create();
+            for (const file of files) {
+                const imgBytes = await file.arrayBuffer();
+                let img;
+                if (file.type === 'image/jpeg' || file.type === 'image/jpg') img = await pdfDoc.embedJpg(imgBytes);
+                else if (file.type === 'image/png') img = await pdfDoc.embedPng(imgBytes);
+                else continue;
+
+                const page = pdfDoc.addPage([img.width, img.height]);
+                page.drawImage(img, { x: 0, y: 0, width: img.width, height: img.height });
+            }
+            const pdfBytes = await pdfDoc.save();
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            addResult('obrazky.pdf', URL.createObjectURL(blob));
         }
 
         function convertImage(file) {
@@ -65,43 +109,20 @@
                 img.src = e.target.result;
                 img.onload = () => {
                     const canvas = document.createElement('canvas');
-                    canvas.width = img.width;
-                    canvas.height = img.height;
+                    canvas.width = img.width; canvas.height = img.height;
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0);
                     const type = `image/${mode.value === 'jpg' ? 'jpeg' : mode.value}`;
-                    const url = canvas.toDataURL(type, 0.9);
-                    addResult(file.name.split('.')[0] + '.' + (mode.value === 'jpg' ? 'jpg' : mode.value), url);
+                    addResult(file.name.split('.')[0] + '.' + (mode.value === 'jpg' ? 'jpg' : mode.value), canvas.toDataURL(type, 0.9));
                 };
             };
         }
 
-        async function createPDF(files) {
-            const doc = new jsPDF();
-            for (let i = 0; i < files.length; i++) {
-                const data = await readFileAsDataURL(files[i]);
-                if (i > 0) doc.addPage();
-                doc.addImage(data, 'JPEG', 10, 10, 190, 0);
-            }
-            const blob = doc.output('bloburl');
-            addResult('dokument_export.pdf', blob);
-        }
-
-        function readFileAsDataURL(file) {
-            return new Promise(resolve => {
-                const r = new FileReader();
-                r.onload = (e) => resolve(e.target.result);
-                r.readAsDataURL(file);
-            });
-        }
-
         function addResult(name, url) {
             const item = document.createElement('div');
-            item.className = "flex items-center justify-between p-4 bg-zinc-800/50 rounded-xl border border-zinc-800 animate-in fade-in slide-in-from-bottom-2";
-            item.innerHTML = `
-                <span class="text-sm font-medium truncate pr-4">${name}</span>
-                <a href="${url}" download="${name}" class="bg-white text-black px-5 py-2 rounded-lg text-sm font-bold hover:bg-gray-200 transition-colors">Stáhnout</a>
-            `;
+            item.className = "flex items-center justify-between p-5 bg-slate-800/50 rounded-2xl border border-slate-700 animate-in fade-in zoom-in";
+            item.innerHTML = `<span class="text-sm font-medium truncate pr-4">${name}</span>
+                <a href="${url}" download="${name}" class="bg-cyan-500 text-slate-950 px-6 py-2 rounded-xl text-sm font-black hover:bg-cyan-400 transition-all">STÁHNOUT</a>`;
             resultList.prepend(item);
         }
     </script>
