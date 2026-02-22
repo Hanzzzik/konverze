@@ -21,13 +21,13 @@
         .modal-bg { background: rgba(5, 8, 15, 0.95); backdrop-filter: blur(10px); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col text-left">
 
     <nav class="glass-nav border-b border-white/5 sticky top-0 z-[100]">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between text-left">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.reload()">
                 <div class="w-10 h-10 bg-cyan-400 rounded-xl flex items-center justify-center font-black text-slate-900 shadow-lg">U</div>
-                <span class="text-2xl font-extrabold tracking-tighter text-white uppercase">Ultra<span class="text-cyan-400">Tool</span></span>
+                <span class="text-2xl font-extrabold tracking-tighter text-white uppercase text-left">Ultra<span class="text-cyan-400">Tool</span></span>
             </div>
         </div>
     </nav>
@@ -36,18 +36,18 @@
 
     <main class="max-w-7xl mx-auto px-6 py-12 w-full flex-grow">
         
-        <div class="flex flex-col lg:flex-row gap-12 text-left">
+        <div class="flex flex-col lg:flex-row gap-12">
             <div class="flex-grow space-y-16">
                 
                 <section>
-                    <h2 class="text-xl font-black text-white uppercase tracking-tight mb-8 border-l-4 border-cyan-500 pl-4">PDF Nástroje</h2>
+                    <h2 class="text-xl font-black text-white uppercase tracking-tight mb-8 border-l-4 border-cyan-500 pl-4 text-left">PDF Nástroje</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="tool-card p-8 rounded-[2rem]" onclick="openTool('merge')">
+                        <div class="tool-card p-8 rounded-[2rem] text-left" onclick="openTool('merge')">
                             <div class="text-3xl mb-4">➕</div>
                             <h3 class="font-bold text-lg mb-1">Spojit PDF</h3>
                             <p class="text-slate-500 text-sm">Spojte více dokumentů do jednoho.</p>
                         </div>
-                        <div class="tool-card p-8 rounded-[2rem]" onclick="openTool('img2pdf')">
+                        <div class="tool-card p-8 rounded-[2rem] text-left" onclick="openTool('img2pdf')">
                             <div class="text-3xl mb-4">📄</div>
                             <h3 class="font-bold text-lg mb-1">Obrázky do PDF</h3>
                             <p class="text-slate-500 text-sm">Vytvořte PDF ze svých fotografií.</p>
@@ -56,7 +56,7 @@
                 </section>
 
                 <section>
-                    <h2 class="text-xl font-black text-white uppercase tracking-tight mb-8 border-l-4 border-emerald-500 pl-4">Obrázky & Foto</h2>
+                    <h2 class="text-xl font-black text-white uppercase tracking-tight mb-8 border-l-4 border-emerald-500 pl-4 text-left">Obrázky & Foto</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="tool-card p-6 rounded-3xl text-center" onclick="openTool('img-edit', 'convert')">
                             <div class="text-2xl mb-3">🔄</div>
@@ -75,51 +75,60 @@
 
                 <div class="ad-slot h-32 rounded-[2rem]">Reklama: In-Feed Banner</div>
 
-                <section>
-                    <h2 class="text-xl font-black text-white uppercase tracking-tight mb-8 border-l-4 border-amber-500 pl-4">Utility</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="tool-card p-6 rounded-3xl flex items-center gap-4" onclick="openTool('pass')">
-                            <div class="text-2xl">🔐</div>
-                            <div><h4 class="font-bold">Generátor hesel</h4><p class="text-xs text-slate-500">Neprolomitelná hesla.</p></div>
-                        </div>
-                        <div class="tool-card p-6 rounded-3xl flex items-center gap-4" onclick="openTool('qr')">
-                            <div class="text-2xl">🔗</div>
-                            <div><h4 class="font-bold">QR Generátor</h4><p class="text-xs text-slate-500">URL do QR kódu.</p></div>
-                        </div>
-                    </div>
-                </section>
             </div>
 
             <aside class="w-full lg:w-80 space-y-8">
-                <div class="ad-slot h-[400px] rounded-[2rem]">Reklama: Sidebar</div>
-                <div class="bg-slate-900/50 p-6 rounded-2xl border border-white/5 text-sm text-slate-400 uppercase tracking-widest font-bold text-center">
-                    &copy; 2026 ULTRATOOL
+                <div class="tool-card p-6 rounded-3xl flex items-center gap-4 text-left" onclick="openTool('pass')">
+                    <div class="text-2xl">🔐</div>
+                    <div><h4 class="font-bold">Hesla</h4><p class="text-xs text-slate-500 text-left">Generátor.</p></div>
                 </div>
+                <div class="tool-card p-6 rounded-3xl flex items-center gap-4 text-left" onclick="openTool('qr')">
+                    <div class="text-2xl">🔗</div>
+                    <div><h4 class="font-bold">QR Gen</h4><p class="text-xs text-slate-500 text-left">Vytvořit kód.</p></div>
+                </div>
+                <div class="ad-slot h-[400px] rounded-[2rem]">Reklama: Sidebar</div>
             </aside>
         </div>
     </main>
 
+    <footer class="bg-slate-950 border-t border-white/5 py-16">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
+            <div>
+                <div class="text-white font-black text-2xl uppercase tracking-tighter mb-4 text-left">Ultra<span class="text-cyan-400 font-normal">Tool</span></div>
+                <p class="text-slate-500 text-xs leading-relaxed uppercase tracking-widest font-bold text-left">Váš 100% privátní balík nástrojů.</p>
+            </div>
+            <div class="flex flex-col gap-3 text-xs font-bold text-slate-500 uppercase tracking-widest text-left">
+                <a href="javascript:void(0)" onclick="openInfo('about')" class="hover:text-white transition">O projektu</a>
+                <a href="javascript:void(0)" onclick="openInfo('privacy')" class="hover:text-white transition">Zásady soukromí</a>
+                <a href="javascript:void(0)" onclick="openInfo('contact')" class="hover:text-white transition">Kontakt</a>
+            </div>
+            <div class="md:text-right">
+                <p class="text-slate-700 text-[10px] font-black uppercase tracking-[0.4em]">&copy; 2026 ULTRATOOL LABS INC.</p>
+            </div>
+        </div>
+    </footer>
+
     <div id="overlay" class="fixed inset-0 z-[200] modal-bg hidden items-center justify-center p-4">
         <div class="max-w-2xl w-full bg-[#161e2d] rounded-[2.5rem] p-10 relative border border-white/10 shadow-2xl overflow-y-auto max-h-[90vh]">
             <button onclick="closeTool()" class="absolute top-8 right-8 text-slate-500 hover:text-white transition text-2xl font-bold">✕</button>
-            <div id="modalTitle" class="text-2xl font-black text-white mb-6 uppercase italic tracking-tight"></div>
+            <div id="modalTitle" class="text-2xl font-black text-white mb-6 uppercase italic tracking-tight text-left"></div>
             
-            <div id="toolBody" class="space-y-6 text-center">
-                <div id="drop" class="border-4 border-dashed border-white/5 rounded-[2rem] p-12 hover:border-cyan-500/50 transition-all cursor-pointer">
+            <div id="toolBody" class="space-y-6">
+                <div id="drop" class="border-4 border-dashed border-white/5 rounded-[2rem] p-12 hover:border-cyan-500/50 transition-all cursor-pointer text-center">
                     <div id="toolIcon" class="text-5xl mb-4"></div>
                     <p id="dropText" class="font-bold text-slate-400"></p>
                     <input type="file" id="fIn" class="hidden">
                 </div>
                 
                 <div id="controls" class="hidden grid grid-cols-1 gap-4">
-                    <div id="imgSettings" class="hidden">
+                    <div id="imgSettings" class="hidden text-left">
                         <label class="text-xs font-bold text-cyan-500 uppercase mb-2 block">Cílový formát</label>
                         <select id="targetFormat" class="w-full bg-slate-800 p-3 rounded-xl text-white outline-none">
                             <option value="webp">WebP</option><option value="jpeg">JPEG</option><option value="png">PNG</option>
                         </select>
                     </div>
-                    <div id="qrSettings" class="hidden">
-                        <input type="text" id="qrText" class="w-full bg-slate-800 p-4 rounded-xl mb-4" placeholder="Vložte URL...">
+                    <div id="qrSettings" class="hidden text-center">
+                        <input type="text" id="qrText" class="w-full bg-slate-800 p-4 rounded-xl mb-4 text-white" placeholder="Vložte URL...">
                         <button onclick="doQR()" class="w-full bg-cyan-500 text-black font-black py-4 rounded-xl uppercase">Generovat</button>
                     </div>
                 </div>
@@ -135,6 +144,7 @@
         const fIn = document.getElementById('fIn');
         const resList = document.getElementById('resList');
         const drop = document.getElementById('drop');
+        const controls = document.getElementById('controls');
         let currentTool = '';
         let currentFilter = '';
 
@@ -142,7 +152,7 @@
             currentTool = id; currentFilter = filter;
             overlay.classList.replace('hidden', 'flex');
             resList.innerHTML = '';
-            document.getElementById('controls').classList.add('hidden');
+            controls.classList.add('hidden');
             document.getElementById('imgSettings').classList.add('hidden');
             document.getElementById('qrSettings').classList.add('hidden');
             drop.classList.remove('hidden');
@@ -159,18 +169,39 @@
                 setTitle(filter === 'convert' ? 'Konvertor' : (filter === 'gray' ? 'Černobílá' : 'Invertovat'), '📷', 'Vyberte fotky');
                 fIn.setAttribute('multiple', 'true'); fIn.accept = 'image/*';
                 if(filter === 'convert') {
-                    document.getElementById('controls').classList.remove('hidden');
+                    controls.classList.remove('hidden');
                     document.getElementById('imgSettings').classList.remove('hidden');
                 }
             }
             if(id === 'qr') {
                 setTitle('QR Generátor', '🔗', ''); drop.classList.add('hidden');
-                document.getElementById('controls').classList.remove('hidden');
+                controls.classList.remove('hidden');
                 document.getElementById('qrSettings').classList.remove('hidden');
             }
             if(id === 'pass') {
                 setTitle('Heslo', '🔐', ''); drop.classList.add('hidden');
                 genPass();
+            }
+        }
+
+        // --- SEKCE O PROJEKTU / KONTAKT ---
+        function openInfo(type) {
+            overlay.classList.replace('hidden', 'flex');
+            resList.innerHTML = '';
+            drop.classList.add('hidden');
+            controls.classList.add('hidden');
+            
+            if(type === 'about') {
+                setTitle('O projektu', 'ℹ️', '');
+                resList.innerHTML = '<div class="text-slate-400 text-left text-sm leading-relaxed">ULTRATOOL je bezpečný balík online nástrojů. Na rozdíl od konkurence vaše soubory nikam neposíláme – vše se děje u vás v prohlížeči. Je to rychlejší, soukromé a zdarma.</div>';
+            }
+            if(type === 'privacy') {
+                setTitle('Zásady soukromí', '🔒', '');
+                resList.innerHTML = '<div class="text-slate-400 text-left text-sm leading-relaxed">Vaše soukromí je pro nás prioritou. Soubory se nezpracovávají na našem serveru, ale přímo ve vašem zařízení pomocí vašeho prohlížeče. Nikdo jiný k vašim datům nemá přístup.</div>';
+            }
+            if(type === 'contact') {
+                setTitle('Kontakt', '📧', '');
+                resList.innerHTML = '<div class="text-slate-400 text-left text-sm font-bold uppercase tracking-widest">E-mail: <span class="text-cyan-400">info@ultratool.cz</span></div>';
             }
         }
 
@@ -190,7 +221,6 @@
             if(currentTool === 'img-edit') files.forEach(f => handleImgEdit(f));
         };
 
-        // --- PDF LOGIC ---
         async function handleMerge(files) {
             const doc = await PDFDocument.create();
             for(let f of files) {
@@ -198,7 +228,7 @@
                 const pages = await doc.copyPages(src, src.getPageIndices());
                 pages.forEach(p => doc.addPage(p));
             }
-            addRes('spojeno.pdf', URL.createObjectURL(new Blob([await doc.save()], {type:'application/pdf'})));
+            addRes('spojeno_ultra.pdf', URL.createObjectURL(new Blob([await doc.save()], {type:'application/pdf'})));
         }
 
         async function handleImg2Pdf(files) {
@@ -209,10 +239,10 @@
                 const page = doc.addPage([img.width, img.height]);
                 page.drawImage(img, {x:0, y:0, width:img.width, height:img.height});
             }
-            addRes('dokument.pdf', URL.createObjectURL(new Blob([await doc.save()], {type:'application/pdf'})));
+            addRes('dokument_ultra.pdf', URL.createObjectURL(new Blob([await doc.save()], {type:'application/pdf'})));
         }
 
-        // --- IMAGE LOGIC (FIXED) ---
+        // --- OPRAVENÁ LOGIKA IMAGE EDIT (Zachování formátu) ---
         function handleImgEdit(file) {
             const r = new FileReader(); r.readAsDataURL(file);
             r.onload = (e) => {
@@ -224,13 +254,21 @@
                     if(currentFilter === 'gray') ctx.filter = 'grayscale(100%)';
                     if(currentFilter === 'invert') ctx.filter = 'invert(100%)';
                     ctx.drawImage(img, 0, 0);
-                    const fmt = currentFilter === 'convert' ? document.getElementById('targetFormat').value : 'webp';
-                    addRes(file.name.split('.')[0]+'.'+fmt, c.toDataURL('image/'+fmt));
+                    
+                    let mimeType = file.type;
+                    let extension = file.name.split('.').pop();
+
+                    if(currentFilter === 'convert') {
+                        const target = document.getElementById('targetFormat').value;
+                        mimeType = 'image/' + target;
+                        extension = target === 'jpeg' ? 'jpg' : target;
+                    }
+
+                    addRes(file.name.split('.')[0] + '_upraveno.' + extension, c.toDataURL(mimeType, 0.9));
                 }
             }
         }
 
-        // --- QR & PASS ---
         function doQR() {
             const txt = document.getElementById('qrText').value;
             resList.innerHTML = '<div id="qrcode" class="bg-white p-4 inline-block rounded-xl mx-auto"></div>';
@@ -239,17 +277,16 @@
         function genPass() {
             const s = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@#$%&*";
             let p = ""; for(let i=0; i<16; i++) p += s.charAt(Math.floor(Math.random()*s.length));
-            resList.innerHTML = `<div class="bg-black p-6 rounded-2xl font-mono text-xl text-cyan-400 border border-white/10 break-all">${p}</div>
-                                <button onclick="genPass()" class="mt-4 text-xs font-bold uppercase text-slate-500 underline">Zkusit jiné</button>`;
+            resList.innerHTML = `<div class="bg-black p-6 rounded-2xl font-mono text-xl text-cyan-400 border border-white/10 break-all text-center">${p}</div>
+                                <button onclick="genPass()" class="mt-4 text-xs font-bold uppercase text-slate-500 underline w-full text-center">Zkusit jiné</button>`;
         }
 
         function addRes(n, u) {
             const d = document.createElement('div');
-            d.className = "flex items-center justify-between p-5 bg-black/40 rounded-2xl border border-white/5 animate-pulse";
+            d.className = "flex items-center justify-between p-5 bg-black/40 rounded-2xl border border-white/5";
             d.innerHTML = `<span class="text-xs font-bold truncate pr-4 uppercase">${n}</span>
-                           <a href="${u}" download="${n}" class="bg-white text-black px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest">Stáhnout</a>`;
+                           <a href="${u}" download="${n}" class="bg-white text-black px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg">Stáhnout</a>`;
             resList.prepend(d);
-            setTimeout(() => d.classList.remove('animate-pulse'), 500);
         }
     </script>
 </body>
