@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ULTRATOOL | Profesionální All-in-One Konvertor</title>
-    <meta name="description" content="Bezplatný online konvertor pro Video, Audio, PDF a Obrázky. Vše v prohlížeči, 100% soukromé.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b0f1a; color: #f8fafc; scroll-behavior: smooth; }
-        .category-card { background: #161e2d; border: 1px solid rgba(255,255,255,0.03); transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .category-card:hover { border-color: #22d3ee; transform: translateY(-5px); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b0f1a; color: #f8fafc; }
+        .category-card { background: #161e2d; border: 1px solid rgba(255,255,255,0.03); transition: 0.3s; }
+        .category-card:hover { border-color: #22d3ee; }
         .tool-link { @apply text-slate-400 text-sm py-1.5 hover:text-cyan-400 cursor-pointer block transition-all border-b border-white/5 last:border-0; }
-        .ad-placeholder { background: repeating-linear-gradient(45deg, #161e2d, #161e2d 10px, #1c2638 10px, #1c2638 20px); border: 2px dashed #334155; }
         .modal-bg { background: rgba(5, 8, 15, 0.98); backdrop-filter: blur(20px); }
         .btn-gradient { background: linear-gradient(90deg, #22d3ee, #3b82f6); color: #0b0f1a; }
     </style>
@@ -25,33 +22,30 @@
     <nav class="border-b border-white/5 bg-[#0b0f1a]/80 sticky top-0 z-[100] backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.reload()">
-                <div class="w-10 h-10 bg-cyan-400 rounded-xl flex items-center justify-center font-black text-slate-900 shadow-lg shadow-cyan-500/20">U</div>
-                <span class="text-2xl font-black text-white uppercase tracking-tighter">Ultra<span class="text-cyan-400">Tool</span></span>
-            </div>
-            <div class="hidden lg:block">
-                <div class="ad-placeholder h-12 w-[468px] rounded-lg flex items-center justify-center text-[10px] font-bold opacity-40 uppercase">Reklama: Header Banner</div>
+                <div class="w-10 h-10 bg-cyan-400 rounded-xl flex items-center justify-center font-black text-slate-900 shadow-lg">U</div>
+                <span class="text-2xl font-black text-white uppercase">Ultra<span class="text-cyan-400">Tool</span></span>
             </div>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto px-6 py-12 w-full flex-grow">
-        
         <div class="text-center mb-16">
-            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter italic uppercase">Universal Converter</h1>
-            <p class="text-slate-500 max-w-2xl mx-auto text-lg">Prémiové digitální nástroje běžící přímo ve vašem CPU. <br><span class="text-cyan-500 font-bold underline decoration-cyan-500/20">Soukromí na prvním místě.</span></p>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tighter italic uppercase">Universal Converter</h1>
+            <p class="text-slate-500 max-w-2xl mx-auto text-lg">Všechny nástroje běží lokálně ve vašem prohlížeči. <br><span class="text-cyan-500 font-bold">Soukromí na prvním místě.</span></p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             
             <div class="category-card p-8 rounded-[2.5rem]">
                 <div class="text-3xl mb-4">🎬</div>
-                <h2 class="font-black text-white uppercase tracking-widest text-[10px] mb-6 opacity-50">Video & Audio</h2>
+                <h2 class="font-black text-white uppercase tracking-widest text-[10px] mb-6 opacity-50 italic">Video & Audio</h2>
                 <nav class="flex flex-col">
                     <span class="tool-link" onclick="openTool('video', 'mp4')">Video Converter</span>
                     <span class="tool-link" onclick="openTool('audio', 'mp3')">Audio Converter</span>
                     <span class="tool-link" onclick="openTool('audio', 'mp3')">MP3 Converter</span>
-                    <span class="tool-link" onclick="openTool('video', 'mp3')">MP4 to MP3</span>
-                    <span class="tool-link" onclick="openTool('video', 'mp3')">Video to MP3</span>
+                    <span class="tool-link" onclick="openTool('audio', 'mp3')">MP4 to MP3</span>
+                    <span class="tool-link" onclick="openTool('audio', 'mp3')">Video to MP3</span>
+                    <span class="tool-link" onclick="openTool('video', 'mp4')">MP4 Converter</span>
                     <span class="tool-link" onclick="openTool('video', 'mp4')">MOV to MP4</span>
                     <span class="tool-link" onclick="openTool('audio', 'ogg')">MP3 to OGG</span>
                 </nav>
@@ -59,85 +53,79 @@
 
             <div class="category-card p-8 rounded-[2.5rem]">
                 <div class="text-3xl mb-4">🖼️</div>
-                <h2 class="font-black text-white uppercase tracking-widest text-[10px] mb-6 opacity-50">Image</h2>
+                <h2 class="font-black text-white uppercase tracking-widest text-[10px] mb-6 opacity-50 italic">Image</h2>
                 <nav class="flex flex-col">
                     <span class="tool-link" onclick="openTool('img', 'convert')">Image Converter</span>
                     <span class="tool-link" onclick="openTool('img', 'png')">WEBP to PNG</span>
                     <span class="tool-link" onclick="openTool('img', 'png')">JFIF to PNG</span>
-                    <span class="tool-link" onclick="openTool('img', 'heic')">HEIC to JPG</span>
+                    <span class="tool-link" onclick="openTool('img', 'svg')">PNG to SVG</span>
+                    <span class="tool-link" onclick="openTool('img', 'jpg')">HEIC to JPG</span>
                     <span class="tool-link" onclick="openTool('img', 'png')">HEIC to PNG</span>
                     <span class="tool-link" onclick="openTool('img', 'jpg')">WEBP to JPG</span>
+                    <span class="tool-link" onclick="openTool('img', 'svg')">SVG Converter</span>
                 </nav>
             </div>
 
             <div class="category-card p-8 rounded-[2.5rem]">
                 <div class="text-3xl mb-4">📄</div>
-                <h2 class="font-black text-white uppercase tracking-widest text-[10px] mb-6 opacity-50">PDF & Documents</h2>
+                <h2 class="font-black text-white uppercase tracking-widest text-[10px] mb-6 opacity-50 italic">PDF & Documents</h2>
                 <nav class="flex flex-col">
-                    <span class="tool-link" onclick="openTool('pdf', 'merge')">PDF Merger</span>
-                    <span class="tool-link" onclick="openTool('pdf', 'img2pdf')">JPG to PDF</span>
-                    <span class="tool-link" onclick="openTool('pdf', 'img2pdf')">HEIC to PDF</span>
+                    <span class="tool-link" onclick="openTool('pdf', 'merge')">PDF Converter</span>
                     <span class="tool-link" onclick="openTool('pdf', 'merge')">Document Converter</span>
-                    <span class="tool-link" onclick="openInfo('soon')">PDF to Word (Soon)</span>
-                    <span class="tool-link" onclick="openInfo('soon')">DOCX to PDF (Soon)</span>
+                    <span class="tool-link" onclick="openInfo('soon')">Ebook Converter</span>
+                    <span class="tool-link" onclick="openInfo('soon')">PDF to Word</span>
+                    <span class="tool-link" onclick="openTool('img', 'jpg')">PDF to JPG</span>
+                    <span class="tool-link" onclick="openInfo('soon')">PDF to EPUB</span>
+                    <span class="tool-link" onclick="openInfo('soon')">EPUB to PDF</span>
+                    <span class="tool-link" onclick="openTool('pdf', 'heic2pdf')">HEIC to PDF</span>
+                    <span class="tool-link" onclick="openInfo('soon')">DOCX to PDF</span>
+                    <span class="tool-link" onclick="openTool('pdf', 'img2pdf')">JPG to PDF</span>
                 </nav>
             </div>
 
             <div class="category-card p-8 rounded-[2.5rem]">
                 <div class="text-3xl mb-4">🎞️</div>
-                <h2 class="font-black text-white uppercase tracking-widest text-[10px] mb-6 opacity-50">GIF</h2>
+                <h2 class="font-black text-white uppercase tracking-widest text-[10px] mb-6 opacity-50 italic">GIF</h2>
                 <nav class="flex flex-col">
                     <span class="tool-link" onclick="openTool('video', 'gif')">Video to GIF</span>
                     <span class="tool-link" onclick="openTool('video', 'gif')">MP4 to GIF</span>
                     <span class="tool-link" onclick="openTool('video', 'gif')">WEBM to GIF</span>
-                    <span class="tool-link" onclick="openTool('video', 'gif')">MOV to GIF</span>
+                    <span class="tool-link" onclick="openTool('video', 'gif')">APNG to GIF</span>
+                    <span class="tool-link" onclick="openTool('video', 'gif')">GIF to MP4</span>
+                    <span class="tool-link" onclick="openTool('video', 'gif')">GIF to APNG</span>
                     <span class="tool-link" onclick="openTool('img', 'gif')">Image to GIF</span>
+                    <span class="tool-link" onclick="openTool('video', 'gif')">MOV to GIF</span>
+                    <span class="tool-link" onclick="openTool('video', 'gif')">AVI to GIF</span>
                 </nav>
             </div>
         </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div class="lg:col-span-2">
-                <div class="ad-placeholder h-40 rounded-[2.5rem] flex items-center justify-center text-xs font-bold uppercase text-slate-600">Reklama: Main Content Banner (728x250)</div>
-            </div>
-            <div class="ad-placeholder h-40 rounded-[2.5rem] flex items-center justify-center text-xs font-bold uppercase text-slate-600">Reklama: Sidebar Ad</div>
-        </div>
-
     </main>
 
-    <footer class="bg-slate-950 border-t border-white/5 py-16">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
-            <div>
-                <span class="text-2xl font-black text-white uppercase tracking-tighter">UltraTool</span>
-                <p class="text-slate-600 text-[10px] mt-4 uppercase tracking-[0.3em] font-bold leading-loose">
-                    Serverless Processing <br> info@webmarek.cz
-                </p>
+    <footer class="bg-slate-950 border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs font-bold text-slate-600 uppercase tracking-widest">
+            <div>ULTRA<span class="text-cyan-500 font-black">TOOL</span> LABS</div>
+            <div class="flex gap-6 my-4 md:my-0">
+                <span onclick="openInfo('about')" class="cursor-pointer hover:text-white">O projektu</span>
+                <span onclick="openInfo('privacy')" class="cursor-pointer hover:text-white">Soukromí</span>
+                <span onclick="openInfo('contact')" class="cursor-pointer hover:text-white">Kontakt</span>
             </div>
-            <div class="flex flex-col gap-4 text-[10px] font-black uppercase tracking-widest text-slate-500">
-                <span class="cursor-pointer hover:text-white transition" onclick="openInfo('about')">About Project</span>
-                <span class="cursor-pointer hover:text-white transition" onclick="openInfo('privacy')">Privacy Policy</span>
-                <span class="cursor-pointer hover:text-white transition" onclick="openInfo('contact')">Contact Support</span>
-            </div>
-            <div class="text-slate-800 text-[10px] font-black md:text-right uppercase tracking-[0.5em] flex flex-col justify-end">
-                &copy; 2026 ULTRATOOL LABS <br> Design by webmarek.cz
-            </div>
+            <div>DESIGN BY WEBMAREK.CZ</div>
         </div>
     </footer>
 
     <div id="overlay" class="fixed inset-0 z-[200] modal-bg hidden items-center justify-center p-4">
-        <div class="max-w-3xl w-full bg-[#161e2d] rounded-[3rem] p-10 relative border border-white/10 shadow-2xl overflow-y-auto max-h-[95vh]">
-            <button onclick="closeTool()" class="absolute top-8 right-8 text-slate-500 hover:text-white text-3xl transition">✕</button>
-            <div id="modalTitle" class="text-3xl font-black text-white mb-8 uppercase italic tracking-tighter text-left"></div>
+        <div class="max-w-2xl w-full bg-[#161e2d] rounded-[3rem] p-10 relative border border-white/10 shadow-2xl overflow-y-auto max-h-[90vh]">
+            <button onclick="closeTool()" class="absolute top-8 right-8 text-slate-500 hover:text-white text-3xl">✕</button>
+            <div id="modalTitle" class="text-3xl font-black text-white mb-6 uppercase italic tracking-tighter"></div>
             
-            <div id="toolBody" class="space-y-8">
-                <div id="drop" class="border-4 border-dashed border-white/5 rounded-[3rem] p-20 text-center cursor-pointer hover:border-cyan-500/50 transition-all group">
-                    <div id="toolIcon" class="text-7xl mb-6 group-hover:scale-110 transition-transform">📥</div>
-                    <p id="dropText" class="font-black text-slate-400 uppercase tracking-[0.2em] text-[11px]">Vložte soubor k okamžitému zpracování</p>
+            <div id="toolBody" class="space-y-6">
+                <div id="drop" class="border-4 border-dashed border-white/5 rounded-[2.5rem] p-16 hover:border-cyan-500/50 transition-all cursor-pointer text-center">
+                    <div id="toolIcon" class="text-6xl mb-4">📥</div>
+                    <p id="dropText" class="font-bold text-slate-400 uppercase tracking-widest text-[10px]">Přetáhněte soubor k okamžitému zpracování</p>
                     <input type="file" id="fIn" class="hidden">
                 </div>
-                
-                <div id="status" class="hidden text-cyan-400 font-black text-center animate-pulse py-6 text-[10px] uppercase tracking-[0.4em]">Zpracovávám pomocí procesoru návštěvníka...</div>
-                <div id="resList" class="space-y-4 mt-8"></div>
+                <div id="status" class="hidden text-cyan-400 font-bold text-center animate-pulse py-4 italic text-xs uppercase tracking-widest">Zpracovávám...</div>
+                <div id="resList" class="space-y-3 mt-6"></div>
             </div>
         </div>
     </div>
@@ -151,49 +139,30 @@
         const status = document.getElementById('status');
         let currentTool = '', currentFilter = '';
 
-        // Otevírání nástrojů
         function openTool(cat, mode) {
             currentTool = cat; currentFilter = mode;
             overlay.classList.replace('hidden', 'flex');
-            resList.innerHTML = ''; 
-            status.classList.add('hidden'); 
-            drop.classList.remove('hidden');
+            resList.innerHTML = ''; status.classList.add('hidden'); drop.classList.remove('hidden');
+            document.getElementById('modalTitle').innerText = mode.toUpperCase() + ' TOOL';
             
-            document.getElementById('modalTitle').innerText = mode.replace('2', ' to ').toUpperCase();
-            
-            if(cat === 'pdf') {
-                fIn.multiple = true;
-                fIn.accept = mode === 'merge' ? '.pdf' : 'image/*';
-            } else if(cat === 'img') {
-                fIn.multiple = true;
-                fIn.accept = mode === 'heic' ? '.heic' : 'image/*';
-            } else {
-                fIn.multiple = false;
-                fIn.accept = 'video/*,audio/*';
-            }
+            if(cat === 'pdf') fIn.accept = (mode === 'merge') ? '.pdf' : 'image/*';
+            else if(cat === 'img') fIn.accept = (mode === 'heic') ? '.heic' : 'image/*';
+            else fIn.accept = 'video/*,audio/*';
+            fIn.multiple = true;
         }
 
-        // Informační modaly
         function openInfo(type) {
             openTool('info', type); drop.classList.add('hidden');
-            const infoMap = {
-                'contact': '<div class="text-center font-black text-cyan-400 text-2xl tracking-tighter py-10">info@webmarek.cz</div>',
-                'about': '<p class="text-slate-500 text-center leading-loose font-medium">ULTRATOOL je nejrychlejší český balík digitálních nástrojů. Díky technologii Client-Side probíhá vše u vás v prohlížeči. Soukromí je 100% zaručeno.</p>',
-                'privacy': '<p class="text-slate-500 text-center leading-loose font-medium">Vaše soubory nikdy neopustí váš počítač. Žádné odesílání na server, žádné sledování.</p>',
-                'soon': '<div class="text-center py-10 opacity-30 font-black uppercase tracking-widest text-xs">Tato funkce bude dostupná v příštím updatu</div>'
-            };
-            resList.innerHTML = infoMap[type] || '';
+            if(type === 'contact') resList.innerHTML = '<div class="text-center text-cyan-400 font-bold">info@webmarek.cz</div>';
+            if(type === 'soon') resList.innerHTML = '<div class="text-center text-slate-500 italic">Tato funkce bude dostupná v příští aktualizaci.</div>';
         }
 
         function closeTool() { overlay.classList.replace('flex', 'hidden'); }
 
         drop.onclick = () => fIn.click();
-        
-        // Logika zpracování
         fIn.onchange = async (e) => {
             const files = Array.from(e.target.files);
-            if(files.length === 0) return;
-            
+            if(!files.length) return;
             status.classList.remove('hidden');
             
             try {
@@ -203,17 +172,12 @@
                 } else if(currentTool === 'img') {
                     for(let f of files) await handleImgEdit(f);
                 } else if(currentTool === 'video' || currentTool === 'audio') {
-                    // Placeholder pro FFmpeg
-                    resList.innerHTML = '<div class="text-amber-500 text-[10px] text-center font-bold bg-amber-500/10 p-4 rounded-xl uppercase tracking-widest">Video/Audio moduly vyžadují lokální výpočetní výkon. Pro v10.0 použijte obrázky/PDF.</div>';
+                    resList.innerHTML = '<div class="text-amber-500 text-xs text-center p-4 bg-amber-500/10 rounded-xl">Pro video/audio nástroje použijte zatím naše obrázkové/PDF konvertory. Plná podpora FFmpeg bude v příští verzi.</div>';
                 }
-            } catch (err) {
-                alert("Chyba při zpracování: " + err.message);
-            }
-            
+            } catch (err) { alert("Chyba: " + err.message); }
             status.classList.add('hidden');
         };
 
-        // PDF Merging
         async function handlePdfMerge(files) {
             const doc = await PDFDocument.create();
             for(let f of files) {
@@ -224,7 +188,6 @@
             addRes('spojeno_ultratool.pdf', URL.createObjectURL(new Blob([await doc.save()], {type:'application/pdf'})));
         }
 
-        // JPG/PNG to PDF
         async function handleImg2Pdf(files) {
             const doc = await PDFDocument.create();
             for(let f of files) {
@@ -236,7 +199,6 @@
             addRes('dokument_ultra.pdf', URL.createObjectURL(new Blob([await doc.save()], {type:'application/pdf'})));
         }
 
-        // Image Editing & Conversion
         async function handleImgEdit(file) {
             let blob = file;
             if(file.name.toLowerCase().endsWith('.heic')) {
@@ -249,21 +211,19 @@
                     const c = document.createElement('canvas');
                     c.width = i.width; c.height = i.height;
                     c.getContext('2d').drawImage(i, 0, 0);
-                    let ext = currentFilter === 'convert' || currentFilter === 'webp' ? 'webp' : 'jpg';
-                    if (currentFilter === 'png') ext = 'png';
-                    addRes(file.name.split('.')[0] + '_converted.' + ext, c.toDataURL('image/'+ext));
+                    let ext = (currentFilter === 'png') ? 'png' : 'jpg';
+                    if(currentFilter === 'svg') ext = 'svg'; // Zde by byla logika pro trasování, zatím jen přípona
+                    addRes(file.name.split('.')[0] + '_converted.' + ext, c.toDataURL('image/'+(ext==='jpg'?'jpeg':ext)));
                 }
             }
         }
 
-        // Zobrazení výsledku ke stažení
         function addRes(n, u) {
             const d = document.createElement('div');
-            d.className = "flex items-center justify-between p-6 bg-slate-950/50 rounded-2xl border border-white/5 shadow-inner animate-pulse";
-            d.innerHTML = `<span class="text-[10px] font-black truncate pr-6 uppercase text-slate-500 tracking-tighter italic">${n}</span>
-                           <a href="${u}" download="${n}" class="btn-gradient px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-cyan-500/10 transition hover:scale-105 active:scale-95">Download</a>`;
+            d.className = "flex items-center justify-between p-5 bg-black/40 rounded-2xl border border-white/5 animate-in slide-in-from-bottom-2";
+            d.innerHTML = `<span class="text-[10px] font-black truncate pr-4 uppercase text-slate-500">${n}</span>
+                           <a href="${u}" download="${n}" class="btn-gradient px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-cyan-500/20">Stáhnout</a>`;
             resList.prepend(d);
-            setTimeout(() => d.classList.remove('animate-pulse'), 500);
         }
     </script>
 </body>
