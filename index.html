@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ULTRATOOL | Profesionální Online Balík Nástrojů</title>
+    <title>ULTRATOOL | Profesionální Online Balík Nástrojů Zdarma</title>
+    <meta name="description" content="Bezplatné online nástroje pro spojování PDF, převod obrázků na WebP, JPG, PNG a úpravu fotek přímo v prohlížeči.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -32,9 +33,9 @@
         </div>
     </nav>
 
-    <div class="max-w-7xl mx-auto w-full px-6 mt-8"><div class="ad-slot h-24 rounded-2xl">Reklama: Top Leaderboard</div></div>
+    <div class="max-w-7xl mx-auto w-full px-6 mt-8"><div class="ad-slot h-24 rounded-2xl text-center">Reklama: Top Leaderboard (Zde vložte AdSense kód)</div></div>
 
-    <main class="max-w-7xl mx-auto px-6 py-12 w-full flex-grow">
+    <main class="max-w-7xl mx-auto px-6 py-12 w-full flex-grow text-left">
         
         <div class="flex flex-col lg:flex-row gap-12">
             <div class="flex-grow space-y-16">
@@ -45,12 +46,12 @@
                         <div class="tool-card p-8 rounded-[2rem] text-left" onclick="openTool('merge')">
                             <div class="text-3xl mb-4">➕</div>
                             <h3 class="font-bold text-lg mb-1">Spojit PDF</h3>
-                            <p class="text-slate-500 text-sm">Spojte více dokumentů do jednoho.</p>
+                            <p class="text-slate-500 text-sm">Spojte více dokumentů do jednoho profesionálního PDF.</p>
                         </div>
                         <div class="tool-card p-8 rounded-[2rem] text-left" onclick="openTool('img2pdf')">
                             <div class="text-3xl mb-4">📄</div>
                             <h3 class="font-bold text-lg mb-1">Obrázky do PDF</h3>
-                            <p class="text-slate-500 text-sm">Vytvořte PDF ze svých fotografií.</p>
+                            <p class="text-slate-500 text-sm">Vytvořte dokumenty ze svých fotografií bleskově.</p>
                         </div>
                     </div>
                 </section>
@@ -73,20 +74,26 @@
                     </div>
                 </section>
 
-                <div class="ad-slot h-32 rounded-[2rem]">Reklama: In-Feed Banner</div>
+                <section class="bg-slate-900/30 p-8 rounded-[2rem] border border-white/5 mt-12">
+                    <h2 class="text-lg font-bold text-white mb-4">Proč používat ULTRATOOL?</h2>
+                    <div class="text-sm text-slate-400 space-y-4 leading-relaxed">
+                        <p>Hledáte nejlepší způsob, jak **spojit PDF soubory online** nebo **převést obrázky na WebP** pro rychlejší web? ULTRATOOL nabízí profesionální sadu nástrojů, které fungují přímo ve vašem prohlížeči. Na rozdíl od jiných služeb vaše data nikam nenahráváme, což zajišťuje maximální bezpečnost a soukromí.</p>
+                        <p>Naše funkce zahrnují hromadnou konverzi fotek na JPEG, PNG, tvorbu PDF z obrázků a pokročilé filtry jako černobílá úprava či inverze barev. Vše je k dispozici zdarma, bez registrace a bez čekání ve frontě na serveru.</p>
+                    </div>
+                </section>
 
             </div>
 
             <aside class="w-full lg:w-80 space-y-8">
                 <div class="tool-card p-6 rounded-3xl flex items-center gap-4 text-left" onclick="openTool('pass')">
                     <div class="text-2xl">🔐</div>
-                    <div><h4 class="font-bold">Hesla</h4><p class="text-xs text-slate-500 text-left">Generátor.</p></div>
+                    <div><h4 class="font-bold uppercase text-xs tracking-widest">Hesla</h4><p class="text-[10px] text-slate-500">Bezpečný generátor</p></div>
                 </div>
                 <div class="tool-card p-6 rounded-3xl flex items-center gap-4 text-left" onclick="openTool('qr')">
                     <div class="text-2xl">🔗</div>
-                    <div><h4 class="font-bold">QR Gen</h4><p class="text-xs text-slate-500 text-left">Vytvořit kód.</p></div>
+                    <div><h4 class="font-bold uppercase text-xs tracking-widest">QR Gen</h4><p class="text-[10px] text-slate-500">Vytvořte kód z URL</p></div>
                 </div>
-                <div class="ad-slot h-[400px] rounded-[2rem]">Reklama: Sidebar</div>
+                <div class="ad-slot h-[400px] rounded-[2rem] text-center">Reklama: Sidebar Skyscraper</div>
             </aside>
         </div>
     </main>
@@ -95,7 +102,7 @@
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
             <div>
                 <div class="text-white font-black text-2xl uppercase tracking-tighter mb-4 text-left">Ultra<span class="text-cyan-400 font-normal">Tool</span></div>
-                <p class="text-slate-500 text-xs leading-relaxed uppercase tracking-widest font-bold text-left">Váš 100% privátní balík nástrojů.</p>
+                <p class="text-slate-500 text-xs leading-relaxed uppercase tracking-widest font-bold text-left">Váš 100% privátní balík nástrojů pro práci s dokumenty.</p>
             </div>
             <div class="flex flex-col gap-3 text-xs font-bold text-slate-500 uppercase tracking-widest text-left">
                 <a href="javascript:void(0)" onclick="openInfo('about')" class="hover:text-white transition">O projektu</a>
@@ -103,7 +110,7 @@
                 <a href="javascript:void(0)" onclick="openInfo('contact')" class="hover:text-white transition">Kontakt</a>
             </div>
             <div class="md:text-right">
-                <p class="text-slate-700 text-[10px] font-black uppercase tracking-[0.4em]">&copy; 2026 ULTRATOOL LABS INC.</p>
+                <p class="text-slate-700 text-[10px] font-black uppercase tracking-[0.4em]">&copy; 2026 ULTRATOOL | Design by webmarek.cz</p>
             </div>
         </div>
     </footer>
@@ -128,8 +135,8 @@
                         </select>
                     </div>
                     <div id="qrSettings" class="hidden text-center">
-                        <input type="text" id="qrText" class="w-full bg-slate-800 p-4 rounded-xl mb-4 text-white" placeholder="Vložte URL...">
-                        <button onclick="doQR()" class="w-full bg-cyan-500 text-black font-black py-4 rounded-xl uppercase">Generovat</button>
+                        <input type="text" id="qrText" class="w-full bg-slate-800 p-4 rounded-xl mb-4 text-white" placeholder="Vložte URL nebo text...">
+                        <button onclick="doQR()" class="w-full bg-cyan-500 text-black font-black py-4 rounded-xl uppercase transition hover:bg-cyan-400">Generovat QR kód</button>
                     </div>
                 </div>
 
@@ -158,15 +165,15 @@
             drop.classList.remove('hidden');
 
             if(id === 'merge') { 
-                setTitle('Spojit PDF', '📂', 'Hoďte PDF soubory sem');
+                setTitle('Spojit PDF', '📂', 'Přetáhněte PDF soubory sem');
                 fIn.setAttribute('multiple', 'true'); fIn.accept = '.pdf';
             }
             if(id === 'img2pdf') { 
-                setTitle('Obrázky do PDF', '🖼️', 'Hoďte JPG/PNG sem');
+                setTitle('Obrázky do PDF', '🖼️', 'Přetáhněte JPG/PNG sem');
                 fIn.setAttribute('multiple', 'true'); fIn.accept = 'image/*';
             }
             if(id === 'img-edit') {
-                setTitle(filter === 'convert' ? 'Konvertor' : (filter === 'gray' ? 'Černobílá' : 'Invertovat'), '📷', 'Vyberte fotky');
+                setTitle(filter === 'convert' ? 'Konvertor' : (filter === 'gray' ? 'Černobílá' : 'Invertovat'), '📷', 'Vyberte fotky pro úpravu');
                 fIn.setAttribute('multiple', 'true'); fIn.accept = 'image/*';
                 if(filter === 'convert') {
                     controls.classList.remove('hidden');
@@ -179,12 +186,11 @@
                 document.getElementById('qrSettings').classList.remove('hidden');
             }
             if(id === 'pass') {
-                setTitle('Heslo', '🔐', ''); drop.classList.add('hidden');
+                setTitle('Generátor hesla', '🔐', ''); drop.classList.add('hidden');
                 genPass();
             }
         }
 
-        // --- SEKCE O PROJEKTU / KONTAKT ---
         function openInfo(type) {
             overlay.classList.replace('hidden', 'flex');
             resList.innerHTML = '';
@@ -193,15 +199,15 @@
             
             if(type === 'about') {
                 setTitle('O projektu', 'ℹ️', '');
-                resList.innerHTML = '<div class="text-slate-400 text-left text-sm leading-relaxed">ULTRATOOL je bezpečný balík online nástrojů. Na rozdíl od konkurence vaše soubory nikam neposíláme – vše se děje u vás v prohlížeči. Je to rychlejší, soukromé a zdarma.</div>';
+                resList.innerHTML = '<div class="text-slate-400 text-left text-sm leading-relaxed">ULTRATOOL je bezpečný balík online nástrojů. Na rozdíl od konkurence vaše soubory nikam neposíláme – vše se děje u vás v prohlížeči. Je to rychlejší, soukromé a zcela zdarma. Naším cílem je poskytovat nástroje bez otravných omezení.</div>';
             }
             if(type === 'privacy') {
                 setTitle('Zásady soukromí', '🔒', '');
-                resList.innerHTML = '<div class="text-slate-400 text-left text-sm leading-relaxed">Vaše soukromí je pro nás prioritou. Soubory se nezpracovávají na našem serveru, ale přímo ve vašem zařízení pomocí vašeho prohlížeče. Nikdo jiný k vašim datům nemá přístup.</div>';
+                resList.innerHTML = '<div class="text-slate-400 text-left text-sm leading-relaxed">Vaše soukromí je pro nás prioritou. Veškeré soubory se zpracovávají lokálně přímo ve vašem prohlížeči. Žádná data nejsou ukládána na našich serverech. Nikdo jiný k vašim datům nemá přístup.</div>';
             }
             if(type === 'contact') {
                 setTitle('Kontakt', '📧', '');
-                resList.innerHTML = '<div class="text-slate-400 text-left text-sm font-bold uppercase tracking-widest">E-mail: <span class="text-cyan-400">info@ultratool.cz</span></div>';
+                resList.innerHTML = '<div class="text-slate-400 text-left text-sm font-bold uppercase tracking-widest leading-loose">Podpora a dotazy:<br><span class="text-cyan-400 text-lg">info@webmarek.cz</span></div>';
             }
         }
 
@@ -228,7 +234,7 @@
                 const pages = await doc.copyPages(src, src.getPageIndices());
                 pages.forEach(p => doc.addPage(p));
             }
-            addRes('spojeno_ultra.pdf', URL.createObjectURL(new Blob([await doc.save()], {type:'application/pdf'})));
+            addRes('spojeno_ultratool.pdf', URL.createObjectURL(new Blob([await doc.save()], {type:'application/pdf'})));
         }
 
         async function handleImg2Pdf(files) {
@@ -239,10 +245,9 @@
                 const page = doc.addPage([img.width, img.height]);
                 page.drawImage(img, {x:0, y:0, width:img.width, height:img.height});
             }
-            addRes('dokument_ultra.pdf', URL.createObjectURL(new Blob([await doc.save()], {type:'application/pdf'})));
+            addRes('dokument_ultratool.pdf', URL.createObjectURL(new Blob([await doc.save()], {type:'application/pdf'})));
         }
 
-        // --- OPRAVENÁ LOGIKA IMAGE EDIT (Zachování formátu) ---
         function handleImgEdit(file) {
             const r = new FileReader(); r.readAsDataURL(file);
             r.onload = (e) => {
@@ -271,21 +276,22 @@
 
         function doQR() {
             const txt = document.getElementById('qrText').value;
-            resList.innerHTML = '<div id="qrcode" class="bg-white p-4 inline-block rounded-xl mx-auto"></div>';
+            if(!txt) return alert('Zadejte text nebo URL');
+            resList.innerHTML = '<div id="qrcode" class="bg-white p-4 inline-block rounded-xl mx-auto shadow-lg"></div>';
             new QRCode(document.getElementById('qrcode'), {text: txt, width: 200, height: 200});
         }
         function genPass() {
             const s = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@#$%&*";
             let p = ""; for(let i=0; i<16; i++) p += s.charAt(Math.floor(Math.random()*s.length));
-            resList.innerHTML = `<div class="bg-black p-6 rounded-2xl font-mono text-xl text-cyan-400 border border-white/10 break-all text-center">${p}</div>
-                                <button onclick="genPass()" class="mt-4 text-xs font-bold uppercase text-slate-500 underline w-full text-center">Zkusit jiné</button>`;
+            resList.innerHTML = `<div class="bg-black p-6 rounded-2xl font-mono text-xl text-cyan-400 border border-white/10 break-all text-center shadow-inner">${p}</div>
+                                <button onclick="genPass()" class="mt-4 text-[10px] font-bold uppercase text-slate-500 hover:text-white transition w-full text-center tracking-[0.2em]">Zkusit jiné heslo</button>`;
         }
 
         function addRes(n, u) {
             const d = document.createElement('div');
-            d.className = "flex items-center justify-between p-5 bg-black/40 rounded-2xl border border-white/5";
-            d.innerHTML = `<span class="text-xs font-bold truncate pr-4 uppercase">${n}</span>
-                           <a href="${u}" download="${n}" class="bg-white text-black px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg">Stáhnout</a>`;
+            d.className = "flex items-center justify-between p-5 bg-black/40 rounded-2xl border border-white/5 shadow-sm";
+            d.innerHTML = `<span class="text-[10px] font-bold truncate pr-4 uppercase tracking-tighter text-slate-300">${n}</span>
+                           <a href="${u}" download="${n}" class="bg-white text-black px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg hover:bg-cyan-400 transition">Stáhnout</a>`;
             resList.prepend(d);
         }
     </script>
